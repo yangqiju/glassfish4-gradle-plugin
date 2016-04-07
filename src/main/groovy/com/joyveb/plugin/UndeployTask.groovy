@@ -2,11 +2,11 @@ package com.joyveb.plugin
 
 import org.gradle.api.tasks.TaskAction
 
-class DeployTask extends GlassfishTask {
+class UndeployTask extends GlassfishTask {
 	
 	@TaskAction
 	def exec(){
-		super.exec("deploy")
+		super.exec("undeploy")
 	}
 
 }
