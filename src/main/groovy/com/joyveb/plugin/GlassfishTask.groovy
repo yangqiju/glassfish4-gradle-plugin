@@ -10,22 +10,20 @@ class GlassfishTask extends DefaultTask {
 		if(!deployfile.exists()) {
 			println "${deployfile.absolutePath} is not exists.."
 			return
-		}
-		def allcmd
-		if(System.getenv('glassfishpwd')!=null){
-			allcmd=System.getenv('GLASSFISH_HOME')+'/bin/asadmin --user admin -W '+System.getenv('glassfishpwd')
 		}else{
-			allcmd=System.getenv('GLASSFISH_HOME')+'/bin/asadmin'
+			println "package absolute path ${deployfile.absolutePath}.."
 		}
+		def allcmd='/usr/bin/oadmin '
 		if("deploy".equals(cmd)){
 			allcmd = allcmd+ " deploy --name ${project.name} --contextroot ${project.name} ${deployfile.absolutePath}"
 		}else if("undeploy".equals(cmd)){
 			allcmd = allcmd+ " undeploy --name ${project.name} --contextroot ${project.name} "
 		}
+		println "commond ::$allcmd"
 		def proc = allcmd.execute()
-		proc.in.each { println it }
-		proc.err.each {println '[ERROR]'+it }
 		println cmd+" ${project.name} success.."
+		allcmd = "/usr/bin/oadmin  list-applications"
+		allcmd.execute();
 	}
 
 }
