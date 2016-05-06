@@ -15,7 +15,7 @@ class GlassfishTask extends DefaultTask {
 		}
 		def allcmd='/usr/bin/oadmin '
 		if("deploy".equals(cmd)){
-			allcmd = allcmd+ " deploy --name ${project.name} --contextroot ${project.name} ${deployfile.absolutePath}"
+			allcmd = allcmd+ " deploy --property implicitCdiEnabled=false  --name ${project.name} --contextroot ${project.name} ${deployfile.absolutePath}"
 		}else if("undeploy".equals(cmd)){
 			allcmd = allcmd+ " undeploy --name ${project.name} --contextroot ${project.name} "
 		}
