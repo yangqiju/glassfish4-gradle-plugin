@@ -17,7 +17,7 @@ class GlassfishTask extends DefaultTask {
 		if("deploy".equals(cmd)){
 			allcmd = allcmd+ " deploy --property implicitCdiEnabled=false  --name ${project.name} --contextroot ${project.name} ${deployfile.absolutePath}"
 		}else if("undeploy".equals(cmd)){
-			allcmd = allcmd+ " undeploy --name ${project.name} --contextroot ${project.name} "
+			allcmd = allcmd+ " undeploy  ${project.name} "
 		}
 		println "commond ::$allcmd"
 		def proc = allcmd.execute()
